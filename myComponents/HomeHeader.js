@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, Text, StyleSheet, View, Dimensions} from 'react-native';
+import {Image, StyleSheet, View} from 'react-native';
 
 const HomeHeader = (props) => (
   <View style={([styles.container], props.style)}>

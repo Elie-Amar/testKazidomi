@@ -10,14 +10,10 @@ import React, {useEffect, useRef, useState} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
-  ScrollView,
-  View,
-  Text,
   StatusBar,
   FlatList,
   TouchableOpacity,
   AppState,
-  Button,
 } from 'react-native';
 
 import HomeHeader from './myComponents/HomeHeader';
