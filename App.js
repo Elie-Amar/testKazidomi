@@ -25,6 +25,7 @@ import Article from './myComponents/Article';
 
 import faker from 'faker';
 import PushNotification from 'react-native-push-notification';
+import HighArticle from './myComponents/HighArticle';
 
 PushNotification.configure({
   // (optional) Called when Token is generated (iOS and Android)
@@ -91,13 +92,24 @@ const App: () => React$Node = () => {
     const temp = [];
     for (let i = 0; i < 12; i++) {
       temp.push({
+        n: i,
         id: faker.random.uuid(),
         title: faker.commerce.productName(),
         subtitle: faker.commerce.department(),
         desc:
           faker.commerce.productDescription() +
+          ' ' +
+          faker.commerce.productDescription() +
+          ' ' +
+          faker.commerce.productDescription() +
+          ' ' +
+          faker.commerce.productDescription() +
+          ' ' +
+          faker.commerce.productDescription() +
+          ' ' +
           faker.commerce.productDescription(),
         image: faker.image.image(),
+        date: faker.date.recent().setDate(20 - i),
       });
     }
     setData(temp);
@@ -141,15 +153,29 @@ const App: () => React$Node = () => {
         <FlatList
           data={data}
           renderItem={({item}) => (
-            <TouchableOpacity
-              style={styles.row}
-              onPress={() => {
-                // TO DO navigate to item screen
-                // navigation.navigate("ItemScreen", {item});
-                console.log('Tapped on: ', JSON.stringify(item?.title));
-              }}>
-              <Article data={item} />
-            </TouchableOpacity>
+            <>
+              {item.n > 2 ? (
+                <TouchableOpacity
+                  style={styles.article}
+                  onPress={() => {
+                    // TO DO navigate to item screen
+                    // navigation.navigate("ItemScreen", {item});
+                    console.log('Tapped on: ', JSON.stringify(item?.title));
+                  }}>
+                  <Article data={item} />
+                </TouchableOpacity>
+              ) : (
+                <TouchableOpacity
+                  style={styles.HighArticle}
+                  onPress={() => {
+                    // TO DO navigate to item screen
+                    // navigation.navigate("ItemScreen", {item});
+                    console.log('Tapped on: ', JSON.stringify(item?.title));
+                  }}>
+                  <HighArticle data={item} />
+                </TouchableOpacity>
+              )}
+            </>
           )}
           keyExtractor={(item) => item.id}
         />
@@ -162,11 +188,13 @@ const styles = StyleSheet.create({
   container: {flex: 1, backgroundColor: 'white'},
   homeHeader: {height: 80, margin: 8},
   body: {
-    backgroundColor: 'pink',
     flex: 5,
   },
-  row: {
+  article: {
     height: 132,
+  },
+  HighArticle: {
+    height: 485,
   },
 });
 

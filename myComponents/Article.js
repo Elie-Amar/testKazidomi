@@ -10,10 +10,10 @@ const Article = (props) => {
         </View>
       </View>
       <View style={styles.text}>
-        <Text numberOfLines={1} style={styles.title}>
+        <Text style={styles.title} numberOfLines={1}>
           {props?.data?.title}
         </Text>
-        <Text numberOfLines={5} style={styles.desc}>
+        <Text style={styles.desc} numberOfLines={5}>
           {props?.data?.desc}
         </Text>
       </View>
@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingLeft: 8,
   },
+
   title: {flex: 1, paddingBottom: 8, fontWeight: 'bold'},
   desc: {},
 });
