@@ -35,18 +35,12 @@ PushNotification.configure({
   // (required) Called when a remote is received or opened, or local notification is opened
   onNotification: function (notification) {
     console.log('NOTIFICATION:', notification);
-
-    // process the notification
-
-    // (required) Called when a remote is received or opened, or local notification is opened
-    //notification.finish(PushNotificationIOS.FetchResult.NoData);
   },
 
   // (optional) Called when Registered Action is pressed and invokeApp is false, if true onNotification will be called (Android)
   onAction: function (notification) {
     console.log('ACTION:', notification.action);
     console.log('NOTIFICATION:', notification);
-
     // process the action
   },
 
@@ -127,7 +121,6 @@ const App: () => React$Node = () => {
 
     appState.current = nextAppState;
     setAppStateVisible(appState.current);
-    console.log('AppState', appState.current);
   };
 
   const scheduleNotification = () => {
@@ -145,30 +138,19 @@ const App: () => React$Node = () => {
       <StatusBar backgroundColor={'black'} />
       <SafeAreaView style={styles.container}>
         <HomeHeader style={styles.homeHeader} />
-        {/* <Button
-          title="test"
-          onPress={() => {
-            PushNotification.getScheduledLocalNotifications((array) => {
-              console.log(array);
-            });
-          }}
-        /> */}
         <FlatList
           data={data}
-          renderItem={({item}) => {
-            console.log(item);
-            return (
-              <TouchableOpacity
-                style={styles.row}
-                onPress={() => {
-                  // navigate to item screen if it's set up
-                  // navigation.navigate("ItemScreen", {item});
-                  console.log('Tapped on: ', JSON.stringify(item?.title));
-                }}>
-                <Article data={item} />
-              </TouchableOpacity>
-            );
-          }}
+          renderItem={({item}) => (
+            <TouchableOpacity
+              style={styles.row}
+              onPress={() => {
+                // TO DO navigate to item screen
+                // navigation.navigate("ItemScreen", {item});
+                console.log('Tapped on: ', JSON.stringify(item?.title));
+              }}>
+              <Article data={item} />
+            </TouchableOpacity>
+          )}
           keyExtractor={(item) => item.id}
         />
       </SafeAreaView>
