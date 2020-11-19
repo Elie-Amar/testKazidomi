@@ -5,3 +5,5 @@
 3) when the users leaves the app (background or kills it), send a push notification to make him come back (I've setup 5 seconds for testing conveniences).
 
 NB: Notification works on Android only
+
+![Alt Text](https://github.com/iMBSoD/testKazidomi/blob/main/kazidomi%20demo.gif)
